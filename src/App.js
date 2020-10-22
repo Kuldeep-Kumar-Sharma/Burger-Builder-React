@@ -1,9 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
+import Layout from "./components/Layout/Layout";
+import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder";
 import "./App.css";
 
 function App() {
-  return <div></div>;
+  return (
+    <Layout>
+      <BurgerBuilder></BurgerBuilder>
+    </Layout>
+  );
 }
 
 export default App;
