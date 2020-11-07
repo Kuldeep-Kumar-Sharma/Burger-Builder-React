@@ -1,29 +1,28 @@
 import React from "react";
-import BurgerIngredient from "../Burger/BurgerIngredient/BurgerIngredient";
-import "./Burger.css";
 
-const Burger = (props) => {
-  let transformIngredients = Object.keys(props.ingredients)
+import styles from "./Burger.module.css";
+import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
+
+const burger = (props) => {
+  let transformedIngredients = Object.keys(props.ingredients)
     .map((igKey) => {
       return [...Array(props.ingredients[igKey])].map((_, i) => {
-        return (
-          <BurgerIngredient key={igKey + i} type={igKey}></BurgerIngredient>
-        );
+        return <BurgerIngredient key={igKey + i} type={igKey} />;
       });
     })
-    .reduce((arr, ele) => {
-      return arr.concat(ele);
-    });
-  if (transformIngredients.length === 0) {
-    transformIngredients = <p>Plese select the a ingredients</p>;
+    .reduce((arr, el) => {
+      return arr.concat(el);
+    }, []);
+  if (transformedIngredients.length === 0) {
+    transformedIngredients = <p>Please start adding ingredients!</p>;
   }
   return (
-    <div className="Burger">
-      <BurgerIngredient type="bread-top"></BurgerIngredient>
-      {transformIngredients}
-      <BurgerIngredient type="bread-bottom"></BurgerIngredient>
+    <div className={styles.Burger}>
+      <BurgerIngredient type="bread-top" />
+      {transformedIngredients}
+      <BurgerIngredient type="bread-bottom" />
     </div>
   );
 };
 
-export default Burger;
+export default burger;
