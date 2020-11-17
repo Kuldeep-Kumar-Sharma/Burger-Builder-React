@@ -6,6 +6,8 @@ import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 
+import axios from "../../axios-orders";
+
 const INGREDIENT_PRICES = {
   salad: 0.5,
   cheese: 0.4,
@@ -28,6 +30,8 @@ class BurgerBuilder extends Component {
     totalPrice: 4,
     purchasable: false,
     purchasing: false,
+    loading: false,
+    error: false,
   };
 
   updatePurchaseState(ingredients) {
@@ -81,7 +85,34 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
+<<<<<<< HEAD
+    //alert("You Continue!");
+    this.state({ loading: true });
+    const order = {
+      ingredients: this.state.ingredients,
+      price: this.state.totalPrice,
+      customer: {
+        name: "Kuldeep Kumar ",
+        address: {
+          street: "Somwhere",
+          zipCode: "1453698",
+          country: "India",
+        },
+        email: "test@test.com",
+      },
+      deliveryMethod: "fastest",
+    };
+    axios
+      .post("/order.json", order)
+      .then((response) => {
+        this.state({ loading: false, purchasing: false });
+      })
+      .catch((error) => {
+        this.state({ loading: false, purchasing: false });
+      });
+=======
     alert("You continue!");
+>>>>>>> e6263c34563cc266e7062d9d9e0a48f67c0a2448
   };
 
   render() {
@@ -91,7 +122,16 @@ class BurgerBuilder extends Component {
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
+<<<<<<< HEAD
+    let orderSummary = null;
+    let burger = this.state.error ? (
+      <p>Ingredient's can't be loaded! </p>
+    ) : (
+      <Spinner />
+    );
+=======
     // {salad: true, meat: false, ...}
+>>>>>>> e6263c34563cc266e7062d9d9e0a48f67c0a2448
     return (
       <Aux>
         <Modal
