@@ -31,7 +31,7 @@ export const fetchIngredientsFailed = () => {
 export const initIngredients = () => {
   return (dispatch) => {
     axios
-      .get("https://telebot-9de6e.firebaseio.com/ingredients.json")
+      .get("==")
       .then((response) => {
         console.log(response);
         dispatch(setIngredients(response.data));
