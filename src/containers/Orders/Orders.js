@@ -12,7 +12,7 @@ class Orders extends Component {
 
   componentDidMount() {
     axios
-      .get("/orders.json")
+      .get("https://telebot-9de6e.firebaseio.com/orders.json")
       .then((res) => {
         const fetchedOrders = [];
         for (let key in res.data) {
